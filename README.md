@@ -22,7 +22,7 @@ git clone https://github.com/MIC-DKFZ/HD-BET
 cd HD-BET
 pip install -e .
 ```
-
+    
 - run in terminal
 ```
 hd-bet -i INPUT_FOLDER -o OUTPUT_FOLDER
