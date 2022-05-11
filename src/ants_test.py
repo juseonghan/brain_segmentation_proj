@@ -23,6 +23,7 @@ def main():
 
     ants.image_write(label_registered, '/home/juseonghan/mia/brain_segmentation_proj/output_registration/result.nii.gz')
     end = time.time()
+    
     print('Time elapsed: ', end - start)
 
 if __name__ == '__main__':
