@@ -14,6 +14,8 @@ Dependencies:
 - glob
 - matplotlib
 - skimage
+- sklearn
+- os
 
 To run skull stripping, enter the skull_strip directory. 
 - skull_strip
@@ -36,3 +38,4 @@ Then run
 $ python3 ./src/run_registration
 ```
 
+For age prediction,
