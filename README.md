@@ -17,7 +17,7 @@ Dependencies:
 - sklearn
 - os
 
-To run skull stripping, enter the skull_strip directory. 
+1. To run skull stripping, enter the skull_strip directory. 
 - skull_strip
     - main.m (main driver)
     - skullstrip.m (skull strip algorithm)
@@ -28,7 +28,7 @@ To run skull stripping, enter the skull_strip directory.
 In main.m, specify img_path to be the path to the nifti file to skull strip. Then, specify the output_path to specify the save path to the output.
 
 
-To run registration and label fusion, enter src. First, edit config.ini. 
+2. To run registration and label fusion, enter src. First, edit config.ini. 
 image=path_to_target_image_to_segment
 atlas_dir=path_to_atlas_volumes_dir
 label_dir=path_to_atlas_labels_dir
@@ -38,4 +38,6 @@ Then run
 $ python3 ./src/run_registration
 ```
 
-For age prediction,
+3. age_prediction.py contains script to predict age based on linear regression
+- outputs model with 20 input features: "trained_model.sav"
+- contains final evaluation to predict the age of 15 brain images
