@@ -1,6 +1,6 @@
 """
 This script runs the registration and label fusion of a nii.gz brain MRI image. 
-First, the image is run on the atlas to calculate the Normalized Mutual Information (NMI) of the atlas and the target image.
+First, the image is run on the atlas to calculate the Mutual Information (NMI) of the atlas and the target image.
 The atlas with the highest NMI is chosen. Registration is done to find the deformed label image. 
 
 """
@@ -87,7 +87,7 @@ def register(img_Moving, img_Fixed, label_dir, output_dir):
     # read in, resize, and register the label map
     label_map = ants.image_read(label_img)
     # label_map = ants.resample_image(label_map, img_fixed.shape, use_voxels=True)
-    label_registered = ants.apply_transforms(fixed=img_fixed, moving=label_map, transformlist=res['fwdtransforms'])
+    label_registered = ants.apply_transforms(fixed=img_fixed, moving=label_map, transformlist=res['fwdtransforms'], interpolator='nearestNeighbor')
 
     # save the file and write the output
     savename = output_dir + num + '_' + img_Fixed[-13:-10] + '_registration'
@@ -97,6 +97,7 @@ def register(img_Moving, img_Fixed, label_dir, output_dir):
 
 
 if __name__ == '__main__':
+    # parse in the config file
     parser = configparser.ConfigParser()
     parser.read('config.ini')
     config = []
@@ -109,10 +110,12 @@ if __name__ == '__main__':
     label_dir = config[2]
     output_dir = config[3]
 
+    # start timer
     start = time.time()
 
     images = glob.glob(image_dir + '*.nii.gz')
 
+    # register all images in the filepath. 
     for image in images:
         print('Processing ' + image_dir + '...')
         atlas_similar = find_most_similar(image, atlas_dir) # TODO: implement different similarity criterion
