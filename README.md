@@ -18,7 +18,7 @@ Dependencies:
 - os
 
 Submissions
-1. brain_segmentation_code folder
+1. code folder
     i. To run skull stripping, enter the skull_strip directory. 
     - skull_strip
         - main.m (main driver)
@@ -47,9 +47,9 @@ Submissions
         - label.txt: label number/name map
         - train_age.csv: age ground truth for training images
 
-2. skullstrip_output folder contains binary brain mask and result of skullstripping
-    * result using out-of-the-box package HD-BET was used in subsequent steps
+2. seg_eval folder contains segmentation results and brain masks for 5 subjects
+    * brainmask result using out-of-the-box package HD-BET was used in subsequent steps
 
-3. registration_output folder contains the segmentation results
+3. age_eval folder contains csv file with age predictions for 15 subjects
+    - ages_pred.csv
 
-4. age_prediction.csv contains results for age prediction for 15 images
