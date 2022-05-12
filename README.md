@@ -15,19 +15,18 @@ Dependencies:
 - matplotlib
 - skimage
 
-To run skull stripping:
-- clone the hd-bet repo
-```
-git clone https://github.com/MIC-DKFZ/HD-BET
-cd HD-BET
-pip install -e .
-```
-    
-- run in terminal
-```
-hd-bet -i INPUT_FOLDER -o OUTPUT_FOLDER
-```
-To run registration and label fusion, first edit config.ini. 
+To run skull stripping, enter the skull_strip directory. 
+- skull_strip
+    - main.m (main driver)
+    - skullstrip.m (skull strip algorithm)
+    - mixed_threshold.m (mixed thresholding algorithm)
+    - get_window.m (get a window of an image with same-like boundary conditions)
+    - has_only_zeros.m (returns True if a matrix has only 0s)
+
+In main.m, specify img_path to be the path to the nifti file to skull strip. Then, specify the output_path to specify the save path to the output.
+
+
+To run registration and label fusion, enter src. First, edit config.ini. 
 image=path_to_target_image_to_segment
 atlas_dir=path_to_atlas_volumes_dir
 label_dir=path_to_atlas_labels_dir
@@ -36,3 +35,4 @@ Then run
 ```
 $ python3 ./src/run_registration
 ```
+
